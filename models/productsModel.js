@@ -9,7 +9,6 @@ const getById = async (id) => {
   const [result] = await connection.execute('SELECT * FROM StoreManager.products Where id = ?;',
     [id]);
   if (!result.length) return null;
-  console.log(result);
   return result[0];
 };
 

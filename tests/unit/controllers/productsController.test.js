@@ -2,7 +2,7 @@ const { expect } = require("chai");
 const { describe } = require("mocha");
 const Sinon = require("sinon");
 
-const productsService = require('../../../models/productsService');
+const productsService = require('../../../services/productsService');
 const productsControler = require('../../../controllers/productsController');
 
 describe('GET ALL', () => {

@@ -3,7 +3,7 @@ const { describe } = require("mocha");
 const Sinon = require("sinon");
 
 const productsModel = require('../../../models/productsModel');
-const productsService = require('../../../models/productsService');
+const productsService = require('../../../services/productsService');
 
 describe('GET ALL', () => {
   before(() => {
