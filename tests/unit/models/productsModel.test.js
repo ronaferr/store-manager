@@ -62,3 +62,35 @@ describe('Model getById', () => {
     })
   });
 });
+describe('Cadastrando produtos', async () => {
+  const mock = {
+    "name": "ProdutoX"
+  };
+
+  before(async () => {
+    const execute = {
+      "id": 4,
+      "name": "ProdutoX"
+    };
+
+    Sinon.stub(connection, 'execute').resolves(execute);
+  });
+
+  after(async() => {
+    connection.execute.restore();
+  });
+
+  describe('inserido com sucesso', async () => {
+    it('retorna um objeto', async () => {
+      const response = await productsModel.create(mock);
+
+      expect(response).to.be.an('object');
+    });
+
+    it('objeto possui ID do produto', async () => {
+      const response = await productsModel.create(mock);
+
+      expect(response).to.have.a.property('id');
+    });
+  });
+});

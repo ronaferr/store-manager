@@ -69,3 +69,51 @@ describe('GET BY ID', () => {
     });
   });
 });
+describe('Insere um novo produto', () => {
+  /* describe('quando o payload informado não é válido', () => {
+    const payload = {};
+
+    it('retorna um boolean', async () => {
+      const response = await productsService.create(payload);
+
+      expect(response).to.be.a('boolean');
+    });
+
+    it('o boolean contém "false"', async () => {
+      const response = await productsService.create(payload);
+
+      expect(response).to.be.equal(false);
+    });
+  }); */
+  describe('quando é inserido com sucesso', () => {
+    const payload = {
+      name: 'Batarangue',
+    };
+
+    before(() => {
+      const EXAMPLE = {
+        id: 10, name: 'Batarangue',
+      };
+
+      Sinon.stub(productsModel, 'create')
+        .resolves(EXAMPLE);
+    });
+
+    after(() => {
+      productsModel.create.restore();
+    });
+
+    it('retorna um objeto', async () => {
+      const response = await productsService.create(payload);
+
+      expect(response).to.be.a('object');
+    });
+
+    it('tal objeto possui o "id" do novo filme inserido', async () => {
+      const response = await productsService.create(payload);
+
+      expect(response).to.have.a.property('id');
+    });
+
+  });
+});

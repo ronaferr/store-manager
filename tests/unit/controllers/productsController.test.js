@@ -107,3 +107,59 @@ describe('GET BY ID CONTROLLER', async () => {
     });
   });
 });
+describe('TESTANDO CREATE', () => {
+  describe('quando o produto não é valido', () => {
+    const request = {};
+    const response = {};
+    before(() => {
+      request.body = {};
+
+      response.status = Sinon.stub()
+        .returns(response);
+      response.send = Sinon.stub()
+        .returns();
+
+      Sinon.stub(productsService, 'create').resolves(false);
+    })
+    after(() => {
+      productsService.create.restore();
+    });
+    it('retorne codigo 400', async () => {
+      await productsService.create(request, response);
+      expect(response.status.calledWith(400)).to.be.equal(true);
+    });
+    it('sem o campo nome', async () => {
+      await productsService.create(request, response);
+      expect(response.send.calledWith("'name' is required")).to.be.equal(true);
+    });
+    it('nome menor que 5 caracteres', async () => {
+      await productsService.create(request, response);
+      expect(response.send.calledWith("'name' length must be at least 5 characters long")).to.be.equal(true);
+    });
+  });
+  describe('quando o produto é cadastrado', () => {
+    const request = {};
+    const response = {};
+    before(() => {
+      request.body = { name: 'batarangue do Batman'};
+
+      response.status = Sinon.stub()
+        .returns(response);
+      response.json = Sinon.stub()
+        .returns();
+
+      Sinon.stub(productsService, 'create').resolves(true);
+    })
+    after(() => {
+      productsService.create.restore();
+    });
+    it('retorne codigo 201', async () => {
+      await productsService.create(request, response);
+      expect(response.status.calledWith(201)).to.be.equal(true);
+    });
+    it('retorne objeto', async () => {
+      await productsService.create(request, response);
+      expect(response).to.have.a.property('name');
+    });
+  })
+});
