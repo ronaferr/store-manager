@@ -5,7 +5,7 @@ const Sinon = require("sinon");
 const connection = require("../../../models/connection");
 const productsModel = require('../../../models/productsModel');
 
-describe('GET ALL', () => {
+describe('Testando Camada Models', () => {
   describe('Retorna todos os produtos', () => {
     const mock = [[
       { id: 1, name: 'Martelo de Thor' },
@@ -18,34 +18,46 @@ describe('GET ALL', () => {
     after(async () => {
       Sinon.restore();
     })
-    it('retorna array', async function () {
+    it('retorna um array', async function () {
       const resultado = await productsModel.getAll();
       expect(resultado).to.be.an('array');
     })
-    it('retorna array cheio', async function () {
+    it('retorna um array cheio', async function () {
       const resultado = await productsModel.getAll();
       expect(resultado).to.be.not.empty;
     })
   });
 });
-describe('GET BY ID', () => {
+describe('Model getById', () => {
+  before(async () => {
+    const execute = [[]];
+    Sinon.stub(connection, 'execute').resolves(execute);
+  })
+  after(async () => {
+    connection.execute.restore();
+  })
+
+  describe('Retorno Null', () => {
+    it('Retorno Null', async function () {
+      const resultado = await productsModel.getById();
+      expect(resultado).to.be.equal(null);
+    })
+  });
+  
   describe('Retorna um produto', () => {
-    const mock = [[
-      { id: 1, name: 'Martelo de Thor' },
-    ]];
-    const id = 1;
     before(async () => {
-      Sinon.stub(connection, 'execute').resolves(mock);
+      const mock = { id: 1, name: 'Martelo de Thor' };
+      Sinon.stub(productsModel, 'getById').resolves(mock);
     })
     after(async () => {
-      Sinon.restore();
+      productsModel.getById.restore();
     })
-    it('retorna array', async function () {
-      const resultado = await productsModel.getById(id);
-      expect(resultado).to.be.an('array');
+    it('retorna um objeto', async function () {
+      const resultado = await productsModel.getById(1);
+      expect(resultado).to.be.an('object');
     })
-    it('retorna array cheio', async function () {
-      const resultado = await productsModel.getById(id);
+    it('retorna um objeto cheio', async function () {
+      const resultado = await productsModel.getById(1);
       expect(resultado).to.be.not.empty;
     })
   });
