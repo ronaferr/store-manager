@@ -4,7 +4,6 @@ const productsModel = require('../models/productsModel');
 const getAll = async (req, res) => {
   try {
     const resultado = await productsService.getAll();
-    console.log('xablau');
     return res.status(200).json(resultado);
   } catch (e) {
     console.log(e);
@@ -16,7 +15,6 @@ const getById = async (req, res) => {
   try {
     const { id } = req.params;
     const resultado = await productsModel.getById(id);
-    console.log(resultado);
     if (!resultado) {
       return res.status(404).json({ message: 'Product not found' });
     }
