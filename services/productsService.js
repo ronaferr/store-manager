@@ -3,9 +3,13 @@ const productsModel = require('../models/productsModel');
 const getAll = async () => productsModel.getAll();
 
 const getById = async (id) => {
-  const productData = productsModel.getById(id);
-
-  if (!productData) return null;
+  const productData = await productsModel.getById(id);
+  console.log(productData);
+  if (productData.length === 0) {
+    const err = new Error('Product not found');
+    err.status = 404;
+    throw err;
+  }
   return productData;
 };
 

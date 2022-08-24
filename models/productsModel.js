@@ -8,8 +8,7 @@ const getAll = async () => {
 const getById = async (id) => {
   const [result] = await connection.execute('SELECT * FROM StoreManager.products Where id = ?;',
     [id]);
-  if (!result.length) return null;
-  return result[0];
+  return result;
 };
 
 const create = async ({ name }) => {

@@ -31,7 +31,7 @@ const create = async (req, res) => {
     const resultado = await salesService.create(req.body);
     res.status(201).json(resultado);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(error.status).json({ message: error.message });
   }
 };
 
