@@ -1,7 +1,6 @@
 const { expect } = require("chai");
 const { describe } = require("mocha");
 const Sinon = require("sinon");
-const connection = require('../../../models/connection');
 
 const productsModel = require('../../../models/productsModel');
 const productsService = require('../../../services/productsService');
@@ -12,7 +11,7 @@ describe('GET ALL', () => {
     Sinon.stub(productsModel, 'getAll').resolves(resultExecute);
   })
   after(() => {
-    Sinon.restore();
+    productsModel.getAll.restore();
   })
   describe('Caso ok', () => {
     it('retorna array', async function () {
@@ -26,7 +25,7 @@ describe('GET ALL', () => {
   });
 });
 
-describe('GET BY ID', () => {
+/* describe('GET BY ID', () => {
   before(async () => {
     const execute = [[]];
 
@@ -68,9 +67,9 @@ describe('GET BY ID', () => {
       expect(response).to.be.not.empty;
     });
   });
-});
-describe('Insere um novo produto', () => {
-  /* describe('quando o payload informado não é válido', () => {
+}); */
+/* describe('Insere um novo produto', () => {
+  describe('quando o payload informado não é válido', () => {
     const payload = {};
 
     it('retorna um boolean', async () => {
@@ -84,7 +83,7 @@ describe('Insere um novo produto', () => {
 
       expect(response).to.be.equal(false);
     });
-  }); */
+  });
   describe('quando é inserido com sucesso', () => {
     const payload = {
       name: 'Batarangue',
@@ -116,4 +115,4 @@ describe('Insere um novo produto', () => {
     });
 
   });
-});
+}); */

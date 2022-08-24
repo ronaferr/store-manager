@@ -5,7 +5,7 @@ const Sinon = require("sinon");
 const productsService = require('../../../services/productsService');
 const productsControler = require('../../../controllers/productsController');
 
-describe('TESTANDO CONTROLLER', () => {
+describe('TESTANDO GetAll Controller', () => {
   describe('Caso de erro', () => {
     const response = {};
     const request = {};
@@ -49,7 +49,7 @@ describe('TESTANDO CONTROLLER', () => {
     })
   });
 });
-describe('GET BY ID CONTROLLER', async () => {
+/* describe('GET BY ID CONTROLLER', async () => {
   describe('Caso de erro', () => {
     const request = {};
     const response = {};
@@ -106,8 +106,8 @@ describe('GET BY ID CONTROLLER', async () => {
       expect(response.json.calledWith(Sinon.match.object)).to.be.equal(true);
     });
   });
-});
-describe('TESTANDO CREATE', () => {
+}); */
+/* describe('TESTANDO CREATE', () => {
   describe('quando o produto não é valido', () => {
     const request = {};
     const response = {};
@@ -163,4 +163,4 @@ describe('TESTANDO CREATE', () => {
       expect(response).to.have.a.property('name');
     });
   })
-});
+}); */

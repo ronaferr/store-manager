@@ -4,7 +4,6 @@ const getAll = async () => productsModel.getAll();
 
 const getById = async (id) => {
   const productData = await productsModel.getById(id);
-  console.log(productData);
   if (!productData) {
     const err = new Error('Product not found');
     err.status = 404;

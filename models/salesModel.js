@@ -6,12 +6,6 @@ const getAll = async () => {
     INNER JOIN StoreManager.sales_products AS sp
     ON s.id = sp.sale_id;`;
   const [result] = await connection.execute(query);
-  /* const serialize = (authorData) => authorData.map((item) => ({
-    saleId: item.sale_id,
-    date: item.date,
-    productId: item.product_id,
-    quantity: item.quantity,
-  })); */
   return result;
 };
 

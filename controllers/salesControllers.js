@@ -4,7 +4,7 @@ const getAll = async (req, res) => {
   try {
     const resultado = await salesService.getAll();
     if (!resultado) {
-      return res.status(404).json({ message: 'Sale not found' });
+      return res.status(404).json({ message: 'Algo deu errado' });
     }
     res.status(200).json(resultado);
   } catch (e) {
