@@ -9,4 +9,10 @@ const getById = async (id) => {
   return saleData;
 };
 
-module.exports = { getAll, getById };
+const create = async (array) => {
+  const newSaleData = await salesModel.create(array);
+
+  return newSaleData;
+};
+
+module.exports = { getAll, getById, create };

@@ -26,4 +26,13 @@ const getById = async (req, res) => {
   }
 };
 
-module.exports = { getAll, getById };
+const create = async (req, res) => {
+  try {
+    const resultado = await salesService.create(req.body);
+    res.status(201).json(resultado);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+module.exports = { getAll, getById, create };

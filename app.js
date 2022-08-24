@@ -22,6 +22,7 @@ app.get('/sales', salesController.getAll);
 app.get('/sales/:id', salesController.getById);
 app.put('/products/:id', validation.valid, productsController.update);
 app.delete('/products/:id', productsController.exclude);
+app.post('/sales', validation.validSale, salesController.create);
 
 // não remova essa exportação, é para o avaliador funcionar
 // você pode registrar suas rotas normalmente, como o exemplo acima
