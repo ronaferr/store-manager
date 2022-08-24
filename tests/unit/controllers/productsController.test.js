@@ -113,13 +113,14 @@ describe('TESTANDO CREATE', () => {
     const response = {};
     before(() => {
       request.body = {};
+      const execute = {};
 
       response.status = Sinon.stub()
         .returns(response);
       response.send = Sinon.stub()
         .returns();
 
-      Sinon.stub(productsService, 'create').resolves(false);
+      Sinon.stub(productsService, 'create').resolves(execute);
     })
     after(() => {
       productsService.create.restore();

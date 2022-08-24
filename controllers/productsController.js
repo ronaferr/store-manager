@@ -29,17 +29,11 @@ const getById = async (req, res) => {
 const create = async (req, res) => {
   try {
     const { name } = req.body;
-    if (!name) {
-      return res.status(400).json({ message: '"name" is required' });
-    }
-    if (name.length < 5) {
-      return res.status(422).json({ message: '"name" length must be at least 5 characters long' });
-    }
     const product = await productsService.create({ name });
     res.status(201).json(product);
-  } catch (e) {
-  res.status(500).json({ message: e.message });
-}
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
 module.exports = { getAll, getById, create };
