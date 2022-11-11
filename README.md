@@ -1,16 +1,11 @@
-# 🚧 README em construção 🚧
+# Projeto Store Manager
 
-<!-- Olá, Tryber!
+# Contexto
+Este projeto trata-se de uma API para gerenciamento de um ecommerce do tipo dropshipping utilizando MSC
 
-Esse é apenas um arquivo inicial para o README do seu projeto.
+## Técnologias usadas
 
-É essencial que você preencha esse documento por conta própria, ok?
+Back-end:
+> Desenvolvido usando: NodeJS, ExpressJS, MySQL, Typescript
 
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-
-⚠️ IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
-
--->
+Projeto desenvolvido durante curso na Trybe
